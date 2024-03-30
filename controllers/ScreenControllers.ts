@@ -1,4 +1,6 @@
 import express,{Request, Response} from "express";
+import Books from "../Database/Books";
+
 // @desc Search for book
 // @route POST /screen/search/:bookid
 // @access public
@@ -17,7 +19,7 @@ const searchForBook = (req: Request,res: Response)=>{
 // @access public
 const getBookInfo = (req: Request,res: Response)=>{
     try{
-        res.status(200).json({message: `Get book info: ${req.params.bookid}`});
+        res.status(200).json(Books);
     }
     catch(error){
         console.log(error)

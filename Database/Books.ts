@@ -7,7 +7,6 @@ interface book{
     location_z: number;
 }
 
-
 let Books: book[] = [
     {
         name: "The best book in the world",
@@ -44,6 +43,6 @@ let Books: book[] = [
         location_y: 5.4, 
         location_z: 5.4, 
 
-    },
-    
+    }, 
 ]
+export default Books;
