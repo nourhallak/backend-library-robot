@@ -2,9 +2,17 @@ interface book{
     name:string;
     auther:string;
     decoded_string:string;
-    location_x: number;
-    location_y: number;
-    location_z: number;
+    position: {
+        x: number;
+        y: number;
+        z: number;
+    }
+    orientation:  {
+        x: number;
+        y: number;
+        z: number;
+        w: number;    
+    }
 }
 
 let Books: book[] = [
@@ -12,37 +20,68 @@ let Books: book[] = [
         name: "The best book in the world",
         auther: "Best Auther",
         decoded_string: "123abc",
-        location_x: 5.4, 
-        location_y: 5.4, 
-        location_z: 5.4, 
-
+        position: {
+            x: 5.3,
+            y: 3.2,
+            z: 2.2,
+        },
+        orientation:  {
+            x: 0,
+            y: 0,
+            z: 0,
+            w: 1,    
+        }
     },
     {
         name: "The 2nd best book in the world",
         auther: "2nd Best Auther",
         decoded_string: "n98d3c",
-        location_x: 5.4, 
-        location_y: 5.4, 
-        location_z: 5.4, 
-
+        position: {
+            x: 5.3,
+            y: 3.2,
+            z: 2.2,
+        },
+        orientation:  {
+            x: 0,
+            y: 0,
+            z: 0,
+            w: 1,    
+        }
     },
     {
         name: "The 3rd best book in the world",
         auther: "3rd Best Auther",
         decoded_string: "k3908v",
-        location_x: 5.4, 
-        location_y: 5.4, 
-        location_z: 5.4, 
-
+        position: {
+            x: 5.3,
+            y: 3.2,
+            z: 2.2,
+        },
+        orientation:  {
+            x: 0,
+            y: 0,
+            z: 0,
+            w: 1,    
+        }
     },
     {
         name: "The 4th best book in the world",
         auther: "4th Best Auther",
         decoded_string: "coi78h",
-        location_x: 5.4, 
-        location_y: 5.4, 
-        location_z: 5.4, 
-
+        position: {
+            x: 5.3,
+            y: 3.2,
+            z: 2.2,
+        },
+        orientation:  {
+            x: 0,
+            y: 0,
+            z: 0,
+            w: 1,    
+        }
     }, 
 ]
 export default Books;
+
+
+

@@ -19,7 +19,7 @@ const searchForBook = (req: Request,res: Response)=>{
 // @access public
 const getBookInfo = (req: Request,res: Response)=>{
     try{
-        res.status(200).json(Books);
+        res.status(200).json();
     }
     catch(error){
         console.log(error)
