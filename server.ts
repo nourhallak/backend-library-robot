@@ -1,9 +1,11 @@
-const express=require('express');
+import express,{Request,Response} from "express";
 const dotenv = require('dotenv').config();
 
 const app=express();
-app.use("/screen", require("./routes/ScreenRouter"));
+// Parse data
+app.use(express.json());
 
+app.use("/screen", require("./routes/ScreenRouter"));
 
 const port=process.env.port || 5000;
 app.listen(port, () => {

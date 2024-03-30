@@ -1,7 +1,8 @@
+import express,{Request, Response} from "express";
 // @desc Search for book
 // @route POST /screen/search/:bookid
 // @access public
-const searchForBook =(req,res)=>{
+const searchForBook = (req: Request,res: Response)=>{
     try{
         res.status(200).json({message: `Post name of book to search for: ${req.params.bookid}`});
     }
@@ -14,7 +15,7 @@ const searchForBook =(req,res)=>{
 // @desc Get book info
 // @route GET /screen/search/:bookid
 // @access public
-const getBookInfo =(req,res)=>{
+const getBookInfo = (req: Request,res: Response)=>{
     try{
         res.status(200).json({message: `Get book info: ${req.params.bookid}`});
     }
@@ -27,7 +28,7 @@ const getBookInfo =(req,res)=>{
 // @desc Get all books
 // @route GET /screen/search/books
 // @access public
-const getAllBooks =(req,res)=>(req,res)=>{
+const getAllBooks = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message: "Get all books"});
     }
@@ -40,7 +41,7 @@ const getAllBooks =(req,res)=>(req,res)=>{
 // @desc Scan book request
 // @route POST /screen/return/scan
 // @access public
-const scanBookRequest =(req,res)=>{
+const scanBookRequest = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message: "Post scan book."});
     }
@@ -53,7 +54,7 @@ const scanBookRequest =(req,res)=>{
 // @desc cancel scan request
 // @route POST /screen/return/cancelscan
 // @access public
-const cancelScanRequest =(req,res)=>{
+const cancelScanRequest = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message: "Post cancel scan book."});
     }
@@ -66,7 +67,7 @@ const cancelScanRequest =(req,res)=>{
 // @desc return book status
 // @route POST /screen/return/returnbook
 // @access public
-const returnBookStatus =(req,res)=>{
+const returnBookStatus = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message: "Post status of returned book."});
     }
@@ -79,7 +80,7 @@ const returnBookStatus =(req,res)=>{
 // @desc go home
 // @route POST /screen/gohome
 // @access public
-const goHome =(req,res)=>{
+const goHome = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message:"Post Go Home"});
     }
@@ -92,7 +93,7 @@ const goHome =(req,res)=>{
 // @desc cancel
 // @route POST /screen/cancel
 // @access public
-const cancel =(req,res)=>{
+const cancel = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message:"Cancel."});
     }
@@ -105,7 +106,7 @@ const cancel =(req,res)=>{
 // @desc pause
 // @route POST /screen/pause
 // @access public
-const pause =(req,res)=>{
+const pause = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message:"Pause."});
     }
@@ -118,7 +119,7 @@ const pause =(req,res)=>{
 // @desc get current status
 // @route GET /screen/currentstatus
 // @access public
-const getCurrentStatus =(req,res)=>{
+const getCurrentStatus = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message:"Get Current Status."});
     }
@@ -131,7 +132,7 @@ const getCurrentStatus =(req,res)=>{
 // @desc get battery percentage
 // @route GET /screen/batterypercentage
 // @access public
-const getBatteryPercentage =(req,res)=>{
+const getBatteryPercentage = (req:Request,res: Response)=>{
     try{
         res.status(200).json({message:"Get battery percentage."});
     }
