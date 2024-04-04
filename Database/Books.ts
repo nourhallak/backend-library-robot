@@ -15,7 +15,7 @@ interface book{
     }
 }
 
-let Books: book[] = [
+export const Books: book[] = [
     {
         name: "The best book in the world",
         auther: "Best Auther",
@@ -81,7 +81,6 @@ let Books: book[] = [
         }
     }, 
 ]
-export default Books;
 
 
 

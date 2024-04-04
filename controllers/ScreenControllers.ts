@@ -1,5 +1,5 @@
 import express,{Request, Response} from "express";
-import Books from "../Database/Books";
+import {Books} from "../Database/Books";
 
 // @desc Search for book
 // @route POST /screen/search/:bookid
@@ -22,7 +22,7 @@ const getBookInfo = (req: Request,res: Response)=>{
         res.status(200).json();
     }
     catch(error){
-        console.log(error)
+        console.log(error);
         res.status(400);
     }
 }
