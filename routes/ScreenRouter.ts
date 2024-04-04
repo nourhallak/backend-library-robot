@@ -16,7 +16,7 @@ const
 
 //Search
 router.route("/search/:bookid").post(searchForBook).get(getBookInfo);
-router.route("/search/books").get(getAllBooks);
+router.route("/search/books/allbooks").get(getAllBooks);
 
 //Return 
 router.route("/return/scan").post(scanBookRequest);

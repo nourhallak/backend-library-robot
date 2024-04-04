@@ -19,7 +19,9 @@ const searchForBook = (req: Request,res: Response)=>{
 // @access public
 const getBookInfo = (req: Request,res: Response)=>{
     try{
-        res.status(200).json(Books[1]);
+        res.status(200).json();
+        console.log(Books[1]);
+
     }
     catch(error){
         console.log(error);
@@ -28,7 +30,7 @@ const getBookInfo = (req: Request,res: Response)=>{
 }
 
 // @desc Get all books
-// @route GET /screen/search/books
+// @route GET /screen/search/books/allbooks
 // @access public
 const getAllBooks = (req:Request,res: Response)=>{
     try{
