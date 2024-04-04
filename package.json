@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.ts",
-    "dev": "nodemon server.ts",
-    "built": "tsc"
+    "built": "tsc",
+    "dev": "nodemon server.ts"   
   },
   "author": "",
   "license": "ISC",
