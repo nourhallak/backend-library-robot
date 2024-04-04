@@ -1,4 +1,4 @@
-interface book{
+export interface book{
     name:string;
     auther:string;
     decoded_string:string;

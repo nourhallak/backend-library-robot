@@ -1,5 +1,5 @@
 import express,{Request, Response} from "express";
-import {Books} from "../Database/Books";
+import {Books,book} from "../Database/Books";
 
 // @desc Search for book
 // @route POST /screen/search/:bookid
@@ -18,10 +18,37 @@ const searchForBook = (req: Request,res: Response)=>{
 // @route GET /screen/search/:bookid
 // @access public
 const getBookInfo = (req: Request,res: Response)=>{
+    // If book not found be3alli2
     try{
-        res.status(200).json();
-        console.log(Books[1]);
-
+        const emptybook:book={
+            name: "",
+            auther: "",
+            decoded_string: "",
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            },
+            orientation: {
+                x: 0,
+                y: 0,
+                z: 0,
+                w: 0
+            }
+        };
+        var book:book=emptybook;
+        
+        Books.forEach(element => {
+            if (element.decoded_string == req.params.bookid){
+                book = element;       
+            }
+        });
+        if(book == emptybook){
+            res.status(404);
+            throw new Error("book not found")
+        }
+        res.status(200);
+        res.json(Books[Books.indexOf(book)]);      
     }
     catch(error){
         console.log(error);
@@ -34,7 +61,7 @@ const getBookInfo = (req: Request,res: Response)=>{
 // @access public
 const getAllBooks = (req:Request,res: Response)=>{
     try{
-        res.status(200).json({message: "Get all books"});
+        res.status(200).json(Books);
     }
     catch(error){
         console.log(error)
