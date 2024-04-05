@@ -1,9 +1,11 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { Books, book } from "../Database/Books";
-
-// @desc Search for book
-// @route POST /screen/search/:bookid
-// @access public
+/**
+  @desc Search for book
+  @route  /screen/search/:bookid
+  @method POST
+  @access public
+*/
 const searchForBook = (req: Request, res: Response) => {
   try {
     res.status(200).json({
@@ -16,11 +18,11 @@ const searchForBook = (req: Request, res: Response) => {
 };
 
 /**
- * Get book info
- * @route /screen/search/:bookid
- * @method GET
- * @access public
- */
+  @desc Get book info
+  @route /screen/search/:bookid
+  @method GET
+  @access public
+*/
 const getBookInfo = (req: Request, res: Response) => {
   // If book not found be3alli2
   try {
@@ -59,9 +61,12 @@ const getBookInfo = (req: Request, res: Response) => {
   }
 };
 
-// @desc Get all books
-// @route GET /screen/search/books/allbooks
-// @access public
+/**
+  @desc Get all books
+  @route /screen/search/books/allbooks
+  @method GET
+  @access public
+*/
 const getAllBooks = (req: Request, res: Response) => {
   try {
     res.status(200).json(Books);
@@ -71,9 +76,12 @@ const getAllBooks = (req: Request, res: Response) => {
   }
 };
 
-// @desc Scan book request
-// @route POST /screen/return/scan
-// @access public
+/**
+  @desc Scan book request
+  @route  /screen/return/scan
+  @method POST
+  @access public
+*/
 const scanBookRequest = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post scan book." });
@@ -83,9 +91,12 @@ const scanBookRequest = (req: Request, res: Response) => {
   }
 };
 
-// @desc cancel scan request
-// @route POST /screen/return/cancelscan
-// @access public
+/**
+  @desc cancel scan request
+  @route /screen/return/cancelscan
+  @method POST
+  @access public
+*/
 const cancelScanRequest = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post cancel scan book." });
@@ -95,9 +106,12 @@ const cancelScanRequest = (req: Request, res: Response) => {
   }
 };
 
-// @desc return book status
-// @route POST /screen/return/returnbook
-// @access public
+/**
+  @desc return book status
+  @route /screen/return/returnbook
+  @method POST
+  @access public
+*/
 const returnBookStatus = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post status of returned book." });
@@ -107,9 +121,12 @@ const returnBookStatus = (req: Request, res: Response) => {
   }
 };
 
-// @desc go home
-// @route POST /screen/gohome
-// @access public
+/**
+  @desc go home
+  @route /screen/gohome
+  @method POST
+  @access public
+*/
 const goHome = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post Go Home" });
@@ -119,9 +136,12 @@ const goHome = (req: Request, res: Response) => {
   }
 };
 
-// @desc cancel
-// @route POST /screen/cancel
-// @access public
+/**
+  @desc cancel
+  @route /screen/cancel
+  @method POST
+  @access public
+*/
 const cancel = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Cancel." });
@@ -131,9 +151,12 @@ const cancel = (req: Request, res: Response) => {
   }
 };
 
-// @desc pause
-// @route POST /screen/pause
-// @access public
+/**
+ * @desc pause
+ * @route /screen/pause
+ * @method POST
+ * @access public
+ */
 const pause = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Pause." });
@@ -143,9 +166,12 @@ const pause = (req: Request, res: Response) => {
   }
 };
 
-// @desc get current status
-// @route GET /screen/currentstatus
-// @access public
+/**
+  @desc get current status
+  @route /screen/currentstatus
+  @method GET
+  @access public
+*/
 const getCurrentStatus = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Get Current Status." });
@@ -155,9 +181,12 @@ const getCurrentStatus = (req: Request, res: Response) => {
   }
 };
 
-// @desc get battery percentage
-// @route GET /screen/batterypercentage
-// @access public
+/**
+@desc get battery percentage
+@route /screen/batterypercentage
+@method GET
+@access public
+*/
 const getBatteryPercentage = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Get battery percentage." });
