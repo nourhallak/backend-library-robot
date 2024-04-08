@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Books, book } from "../Database/Books";
+import { status_1 } from "../Database/Statuses";
 
 /**
   @desc Get book info
@@ -158,7 +159,7 @@ const pause = (req: Request, res: Response) => {
 */
 const getCurrentStatus = (req: Request, res: Response) => {
   try {
-    res.status(200).json({ message: "Get Current Status." });
+    res.status(200).json(status_1);
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -182,13 +183,11 @@ const getBatteryPercentage = (req: Request, res: Response) => {
 
 /**
   @desc Move to book
-  @route  /moveToBook
+  @route  screen/moveToBook
   @method POST
   @access public
 */
 const searchForBook = (req: Request, res: Response) => {
-  console.log("hi");
-
   try {
     res.status(200).json({
       message: "Post command to navigate to a book",
