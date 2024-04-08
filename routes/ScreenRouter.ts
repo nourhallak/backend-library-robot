@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 const router = express.Router();
 const {
-  searchForBook,
   getBookInfo,
   getAllBooks,
   scanBookRequest,
@@ -12,6 +11,7 @@ const {
   pause,
   getCurrentStatus,
   getBatteryPercentage,
+  searchForBook,
 } = require("../controllers/ScreenControllers");
 
 //Search
@@ -29,6 +29,6 @@ router.route("/cancel").post(cancel);
 router.route("/pause").post(pause);
 router.route("/currentstatus").get(getCurrentStatus);
 router.route("/batterypercentage").get(getBatteryPercentage);
-router.route("/moveToBook").post();
+router.route("/moveToBook").post(searchForBook);
 
 module.exports = router;
