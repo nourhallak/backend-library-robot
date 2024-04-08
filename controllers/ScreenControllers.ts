@@ -9,7 +9,6 @@ import { Books, book } from "../Database/Books";
 */
 const getBookInfo = (req: Request, res: Response) => {
   // If book not found be3alli2
-  console.log("hi");
   try {
     const emptybook: book = {
       name: "",
@@ -188,9 +187,11 @@ const getBatteryPercentage = (req: Request, res: Response) => {
   @access public
 */
 const searchForBook = (req: Request, res: Response) => {
+  console.log("hi");
+
   try {
     res.status(200).json({
-      message: `Post name of book to search for: ${req.params.bookid}`,
+      message: "Post command to navigate to a book",
     });
   } catch (error) {
     console.log(error);
