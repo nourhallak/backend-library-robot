@@ -1,21 +1,5 @@
 import { Request, Response } from "express";
 import { Books, book } from "../Database/Books";
-/**
-  @desc Search for book
-  @route  /screen/search/:bookid
-  @method POST
-  @access public
-*/
-const searchForBook = (req: Request, res: Response) => {
-  try {
-    res.status(200).json({
-      message: `Post name of book to search for: ${req.params.bookid}`,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400);
-  }
-};
 
 /**
   @desc Get book info
@@ -25,6 +9,7 @@ const searchForBook = (req: Request, res: Response) => {
 */
 const getBookInfo = (req: Request, res: Response) => {
   // If book not found be3alli2
+  console.log("hi");
   try {
     const emptybook: book = {
       name: "",
@@ -196,8 +181,24 @@ const getBatteryPercentage = (req: Request, res: Response) => {
   }
 };
 
+/**
+  @desc Move to book
+  @route  /moveToBook
+  @method POST
+  @access public
+*/
+const searchForBook = (req: Request, res: Response) => {
+  try {
+    res.status(200).json({
+      message: `Post name of book to search for: ${req.params.bookid}`,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  }
+};
+
 module.exports = {
-  searchForBook,
   getBookInfo,
   getAllBooks,
   scanBookRequest,
@@ -208,4 +209,5 @@ module.exports = {
   pause,
   getCurrentStatus,
   getBatteryPercentage,
+  searchForBook,
 };

@@ -15,7 +15,7 @@ const {
 } = require("../controllers/ScreenControllers");
 
 //Search
-router.route("/search/:bookid").post(searchForBook).get(getBookInfo);
+router.route("/search/:bookid").get(getBookInfo);
 router.route("/search/books/allbooks").get(getAllBooks);
 
 //Return
@@ -29,5 +29,6 @@ router.route("/cancel").post(cancel);
 router.route("/pause").post(pause);
 router.route("/currentstatus").get(getCurrentStatus);
 router.route("/batterypercentage").get(getBatteryPercentage);
+router.route("/moveToBook").post();
 
 module.exports = router;
