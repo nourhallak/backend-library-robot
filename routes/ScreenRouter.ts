@@ -29,6 +29,6 @@ router.route("/cancel").post(cancel);
 router.route("/pause").post(pause);
 router.route("/currentstatus").get(getCurrentStatus);
 router.route("/batterypercentage").get(getBatteryPercentage);
-router.route("/moveToBook").post(searchForBook);
+router.route("/movetobook").post(searchForBook);
 
 module.exports = router;

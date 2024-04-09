@@ -18,7 +18,7 @@ export interface book {
 export const Books: book[] = [
   {
     name: "The best book in the world",
-    auther: "Best Auther",
+    auther: "Best Author",
     decoded_string: "123abc",
     position: {
       x: 5.3,
@@ -34,7 +34,7 @@ export const Books: book[] = [
   },
   {
     name: "The 2nd best book in the world",
-    auther: "2nd Best Auther",
+    auther: "2nd Best Author",
     decoded_string: "n98d3c",
     position: {
       x: 5.3,
@@ -50,7 +50,7 @@ export const Books: book[] = [
   },
   {
     name: "The 3rd best book in the world",
-    auther: "3rd Best Auther",
+    auther: "3rd Best Author",
     decoded_string: "k3908v",
     position: {
       x: 5.3,
@@ -66,7 +66,7 @@ export const Books: book[] = [
   },
   {
     name: "The 4th best book in the world",
-    auther: "4th Best Auther",
+    auther: "4th Best Author",
     decoded_string: "coi78h",
     position: {
       x: 5.3,
