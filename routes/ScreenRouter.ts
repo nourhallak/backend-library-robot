@@ -1,18 +1,20 @@
 import express, { Request, Response } from "express";
 const router = express.Router();
 const {
-  getBookInfo,
-  getAllBooks,
-  scanBookRequest,
-  cancelScanRequest,
-  returnBookStatus,
   goHome,
   cancel,
   pause,
   getCurrentStatus,
   getBatteryPercentage,
   searchForBook,
-} = require("../controllers/ScreenControllers");
+} = require("../controllers/BookOperations/BookControllers");
+const {
+  getBookInfo,
+  getAllBooks,
+  scanBookRequest,
+  cancelScanRequest,
+  returnBookStatus,
+} = require("../controllers/BookController/controller");
 
 //Search
 router.route("/search/:bookid").get(getBookInfo);

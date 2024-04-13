@@ -1,17 +1,19 @@
 export interface Status {
   isMoving: boolean;
-  currentX: number;
-  currentY: number;
   isRackMoving: boolean;
   isCodefound: boolean;
   isCentering: boolean;
+  currentX: number;
+  currentY: number;
+  batteryPercentage: number;
 }
 
 export const status_1 = {
   isMoving: true,
-  currentX: 5.0,
-  currentY: 5.0,
   isRackMoving: true,
   isCodefound: false,
   isCentering: false,
+  currentX: 5.0,
+  currentY: 5.0,
+  batteyPercentage: 90,
 };
