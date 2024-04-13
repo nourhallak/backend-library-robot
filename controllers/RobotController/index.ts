@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import { status_1 } from "../../Database/Statuses";
 
 /**
@@ -8,7 +7,7 @@ import { status_1 } from "../../Database/Statuses";
   @method POST
   @access public
 */
-const goHome = (req: Request, res: Response) => {
+export const goHome = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post Go Home" });
   } catch (error) {
@@ -23,7 +22,7 @@ const goHome = (req: Request, res: Response) => {
   @method POST
   @access public
 */
-const cancel = (req: Request, res: Response) => {
+export const cancel = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Cancel." });
   } catch (error) {
@@ -38,7 +37,7 @@ const cancel = (req: Request, res: Response) => {
  * @method POST
  * @access public
  */
-const pause = (req: Request, res: Response) => {
+export const pause = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Pause." });
   } catch (error) {
@@ -53,7 +52,7 @@ const pause = (req: Request, res: Response) => {
   @method GET
   @access public
 */
-const getCurrentStatus = (req: Request, res: Response) => {
+export const getCurrentStatus = (req: Request, res: Response) => {
   try {
     res.status(200).json(status_1);
   } catch (error) {
@@ -68,7 +67,7 @@ const getCurrentStatus = (req: Request, res: Response) => {
 @method GET
 @access public
 */
-const getBatteryPercentage = (req: Request, res: Response) => {
+export const getBatteryPercentage = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Get battery percentage." });
   } catch (error) {
@@ -83,7 +82,7 @@ const getBatteryPercentage = (req: Request, res: Response) => {
   @method POST
   @access public
 */
-const searchForBook = (req: Request, res: Response) => {
+export const searchForBook = (req: Request, res: Response) => {
   try {
     res.status(200).json({
       message: "Post command to navigate to a book",
@@ -92,13 +91,4 @@ const searchForBook = (req: Request, res: Response) => {
     console.log(error);
     res.status(400);
   }
-};
-
-module.exports = {
-  goHome,
-  cancel,
-  pause,
-  getCurrentStatus,
-  getBatteryPercentage,
-  searchForBook,
 };

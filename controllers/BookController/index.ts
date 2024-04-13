@@ -7,7 +7,7 @@ import { Request, Response } from "express";
   @method GET
   @access public
 */
-const getBookInfo = (req: Request, res: Response) => {
+export const getBookInfo = (req: Request, res: Response) => {
   // If book not found be3alli2
   try {
     const emptybook: book = {
@@ -51,7 +51,7 @@ const getBookInfo = (req: Request, res: Response) => {
     @method GET
     @access public
   */
-const getAllBooks = (req: Request, res: Response) => {
+export const getAllBooks = (req: Request, res: Response) => {
   try {
     res.status(200).json(Books);
   } catch (error) {
@@ -66,7 +66,7 @@ const getAllBooks = (req: Request, res: Response) => {
     @method POST
     @access public
   */
-const scanBookRequest = (req: Request, res: Response) => {
+export const scanBookRequest = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post scan book." });
   } catch (error) {
@@ -81,7 +81,7 @@ const scanBookRequest = (req: Request, res: Response) => {
     @method POST
     @access public
   */
-const cancelScanRequest = (req: Request, res: Response) => {
+export const cancelScanRequest = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post cancel scan book." });
   } catch (error) {
@@ -96,18 +96,11 @@ const cancelScanRequest = (req: Request, res: Response) => {
     @method POST
     @access public
   */
-const returnBookStatus = (req: Request, res: Response) => {
+export const returnBookStatus = (req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "Post status of returned book." });
   } catch (error) {
     console.log(error);
     res.status(400);
   }
-};
-module.exports = {
-  getBookInfo,
-  getAllBooks,
-  scanBookRequest,
-  cancelScanRequest,
-  returnBookStatus,
 };

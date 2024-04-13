@@ -1,20 +1,20 @@
 import express, { Request, Response } from "express";
 const router = express.Router();
-const {
+import {
   goHome,
   cancel,
   pause,
   getCurrentStatus,
   getBatteryPercentage,
   searchForBook,
-} = require("../controllers/BookOperations/BookControllers");
-const {
+} from "../controllers/RobotController";
+import {
   getBookInfo,
   getAllBooks,
   scanBookRequest,
   cancelScanRequest,
   returnBookStatus,
-} = require("../controllers/BookController/controller");
+} from "../controllers/BookController";
 
 //Search
 router.route("/search/:bookid").get(getBookInfo);
