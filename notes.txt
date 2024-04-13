@@ -10,3 +10,6 @@ Pub:
   orientation {x,y,z,w} w must be 1
 
 /goal_distance i16
+
+Missing:
+/cancel/pause

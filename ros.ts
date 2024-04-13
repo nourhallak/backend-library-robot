@@ -63,18 +63,18 @@ ros.on("close", function () {
 // Subscribing to a Topic
 // ----------------------
 
-// var listener = new ROSLIB.Topic({
-//   ros: ros,
-//   name: "/odom",
-//   messageType: "nav_msgs/Odometry",
-// });
+var listener = new ROSLIB.Topic({
+  ros: ros,
+  name: "/odom",
+  messageType: "nav_msgs/Odometry",
+});
 
-// listener.subscribe(function (message) {
-//   console.log(
-//     "Received message on " + listener.name + ": " + JSON.stringify(message)
-//   );
-//   // listener.unsubscribe();
-// });
+listener.subscribe(function (message) {
+  console.log(
+    "Received message on " + listener.name + ": " + JSON.stringify(message)
+  );
+  // listener.unsubscribe();
+});
 
 // Getting topics
 // ---------------------------------

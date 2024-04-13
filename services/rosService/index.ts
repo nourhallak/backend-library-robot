@@ -1,9 +1,20 @@
 import ROSLIB from "roslib";
+import { RobotPosition } from "../../types/robotPosition";
+import { rosSubscribers } from "./rosSubscribers";
 
 export class RosService {
   private static instance: RosService;
-  public ros!: ROSLIB.Ros;
+  private ros!: ROSLIB.Ros;
+  public rosConnected: boolean = false;
+  private listeners: ROSLIB.Topic<ROSLIB.Message>[] = [];
 
+  private unsubscribeAll() {
+    this.listeners.forEach((listener) => {
+      listener.unsubscribe();
+    });
+  }
+
+  // Retries connecting to the ros websocket server every 5 seconds
   private retryConnect() {
     console.log("Retrying to connect to ros websocket server in 5 seconds.");
     setTimeout(() => {
@@ -18,15 +29,21 @@ export class RosService {
 
     this.ros.on("connection", () => {
       console.log("Connected to websocket server.");
+      this.rosConnected = true;
+      this.listeners = rosSubscribers(this.ros);
     });
 
     this.ros.on("error", (error) => {
       console.log("Error connecting to websocket server: ", error);
+      this.rosConnected = false;
+      this.unsubscribeAll();
       this.retryConnect();
     });
 
     this.ros.on("close", () => {
       console.log("Connection to websocket server closed.");
+      this.rosConnected = false;
+      this.unsubscribeAll();
       this.retryConnect();
     });
   }
@@ -51,5 +68,33 @@ export class RosService {
     }
 
     return RosService.instance;
+  }
+
+  // ->
+
+  public moveRobot(robotPosition: RobotPosition) {
+    var moveRobotTopic = new ROSLIB.Topic({
+      ros: this.ros,
+      name: "/book_pose",
+      messageType: "geometry_msgs/Pose",
+    });
+
+    var moveRobot = new ROSLIB.Message(robotPosition);
+
+    moveRobotTopic.publish(moveRobot);
+  }
+
+  public moveCamera(height: number) {
+    var moveCameraTopic = new ROSLIB.Topic({
+      ros: this.ros,
+      name: "/goal_distance",
+      messageType: "std_msgs/Int16",
+    });
+
+    var cameraHeight = new ROSLIB.Message({
+      data: height,
+    });
+
+    moveCameraTopic.publish(cameraHeight);
   }
 }
