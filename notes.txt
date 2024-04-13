@@ -1,0 +1,12 @@
+Sub:
+/odom
+/battery
+/mechanism_state
+/navigation_state
+
+Pub:
+/book_pose Geometry Message Pos 
+  position {x,y,z}
+  orientation {x,y,z,w} w must be 1
+
+/goal_distance i16
