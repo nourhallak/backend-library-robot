@@ -1,6 +1,7 @@
 import ROSLIB from "roslib";
 import { RobotPosition } from "../../types/robotPosition";
 import { rosSubscribers } from "./rosSubscribers";
+import { rosIP, rosPort } from "../../config";
 
 export class RosService {
   private static instance: RosService;
@@ -24,7 +25,7 @@ export class RosService {
 
   private connectToRos() {
     this.ros = new ROSLIB.Ros({
-      url: "ws://localhost:9090",
+      url: `ws://${rosIP}:${rosPort}`,
     });
 
     this.ros.on("connection", () => {

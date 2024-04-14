@@ -1,7 +1,8 @@
 import ROSLIB from "roslib";
+import { rosIP, rosPort } from "./config";
 
 var ros = new ROSLIB.Ros({
-  url: "ws://localhost:9090",
+  url: `ws://${rosIP}:${rosPort}`,
 });
 
 ros.on("connection", function () {
@@ -18,7 +19,6 @@ ros.on("close", function () {
 
 // Publishing a Topic
 // ------------------
-
 // Move Mechanism
 // var moveMechanismTopic = new ROSLIB.Topic({
 //   ros: ros,
@@ -44,7 +44,6 @@ ros.on("close", function () {
 //   name: "/book_pose",
 //   messageType: "geometry_msgs/Pose",
 // });
-
 // var moveRobot = new ROSLIB.Message({
 //   position: {
 //     x: 0.5,
@@ -62,19 +61,18 @@ ros.on("close", function () {
 
 // Subscribing to a Topic
 // ----------------------
+// var listener = new ROSLIB.Topic({
+//   ros: ros,
+//   name: "/odom",
+//   messageType: "nav_msgs/Odometry",
+// });
 
-var listener = new ROSLIB.Topic({
-  ros: ros,
-  name: "/odom",
-  messageType: "nav_msgs/Odometry",
-});
-
-listener.subscribe(function (message) {
-  console.log(
-    "Received message on " + listener.name + ": " + JSON.stringify(message)
-  );
-  // listener.unsubscribe();
-});
+// listener.subscribe(function (message) {
+//   console.log(
+//     "Received message on " + listener.name + ": " + JSON.stringify(message)
+//   );
+//   // listener.unsubscribe();
+// });
 
 // Getting topics
 // ---------------------------------
