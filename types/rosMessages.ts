@@ -37,4 +37,4 @@ export type RackMessage = { data: RackState };
 
 export type NavigationStatusMessage = { data: NavigationState };
 
-export type batteryMessage = { data: number };
+export type BatteryMessage = { data: number };

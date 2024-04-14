@@ -99,18 +99,19 @@ export class RosService {
 
     moveCameraTopic.publish(cameraHeight);
   }
+
   // pause publisher
-  public pause(pause: string) {
-    var moveCameraTopic = new ROSLIB.Topic({
+  public pause(pause: boolean) {
+    var pauseTopic = new ROSLIB.Topic({
       ros: this.ros,
       name: "/pause",
-      messageType: "std_msgs/String",
+      messageType: "std_msgs/Bool",
     });
 
     var pauseStatus = new ROSLIB.Message({
       data: pause,
     });
 
-    moveCameraTopic.publish(pauseStatus);
+    pauseTopic.publish(pauseStatus);
   }
 }

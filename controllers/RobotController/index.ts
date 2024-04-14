@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { status_1 } from "../../Database/Statuses";
+import { RosService } from "../../services/rosService";
+import { rosSubscribers } from "../../services/rosService/rosSubscribers";
+import { book, Books } from "../../Database/Books";
 
 /**
   @desc go home
@@ -9,27 +12,42 @@ import { status_1 } from "../../Database/Statuses";
 */
 export const goHome = (req: Request, res: Response) => {
   try {
-    res.status(200).json({ message: "Post Go Home" });
+    res.status(200);
+    const robot = RosService.getInstance();
+    robot.moveRobot({
+      position: {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      orientation: {
+        x: 0,
+        y: 0,
+        z: 0,
+        w: 1,
+      },
+    });
   } catch (error) {
     console.log(error);
     res.status(400);
   }
 };
 
-/**
-  @desc cancel
-  @route /screen/cancel
-  @method POST
-  @access public
-*/
-export const cancel = (req: Request, res: Response) => {
-  try {
-    res.status(200).json({ message: "Cancel." });
-  } catch (error) {
-    console.log(error);
-    res.status(400);
-  }
-};
+// /**
+//   @desc cancel
+//   @route /screen/cancel
+//   @method POST
+//   @access public
+// */
+// export const cancel = (req: Request, res: Response) => {
+//   try {
+//     res.status(200);
+
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400);
+//   }
+// };
 
 /**
  * @desc pause
@@ -39,7 +57,9 @@ export const cancel = (req: Request, res: Response) => {
  */
 export const pause = (req: Request, res: Response) => {
   try {
-    res.status(200).json({ message: "Pause." });
+    res.status(200);
+    const robot = RosService.getInstance();
+    robot.pause(true);
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -69,7 +89,7 @@ export const getCurrentStatus = (req: Request, res: Response) => {
 */
 export const getBatteryPercentage = (req: Request, res: Response) => {
   try {
-    res.status(200).json({ message: "Get battery percentage." });
+    res.status(200);
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -82,11 +102,33 @@ export const getBatteryPercentage = (req: Request, res: Response) => {
   @method POST
   @access public
 */
-export const searchForBook = (req: Request, res: Response) => {
+export const moveToBook = (req: Request, res: Response) => {
   try {
-    res.status(200).json({
-      message: "Post command to navigate to a book",
+    const emptybook: book = {
+      name: "",
+      auther: "",
+      decoded_string: "",
+      position: {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      orientation: {
+        x: 0,
+        y: 0,
+        z: 0,
+        w: 0,
+      },
+    };
+    var book: book = emptybook;
+
+    Books.forEach((element) => {
+      if (element.decoded_string == req.params.bookid) {
+        book = element;
+      }
     });
+
+    res.status(200);
   } catch (error) {
     console.log(error);
     res.status(400);

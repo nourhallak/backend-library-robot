@@ -3,8 +3,6 @@ import { RobotState } from "../../states/roboteState";
 import {
   batteryMessage,
   NavigationStatusMessage,
-  OdomMessage,
-  PoseMessage,
   RackMessage,
 } from "../../types/rosMessages";
 
