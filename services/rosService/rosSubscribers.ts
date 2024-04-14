@@ -1,7 +1,7 @@
 import ROSLIB from "roslib";
 import { RobotState } from "../../states/roboteState";
 import {
-  batteryMessage,
+  BatteryMessage,
   NavigationStatusMessage,
   RackMessage,
 } from "../../types/rosMessages";
@@ -17,7 +17,7 @@ export const rosSubscribers = (ros: ROSLIB.Ros) => {
   });
 
   batteryListener.subscribe(function (message: any) {
-    robotState.batteryPercentage = (message as batteryMessage).data;
+    robotState.batteryPercentage = (message as BatteryMessage).data;
   });
 
   // rack status
@@ -34,7 +34,7 @@ export const rosSubscribers = (ros: ROSLIB.Ros) => {
   // navigation status
   const navigationStatusListener = new ROSLIB.Topic({
     ros: ros,
-    name: "/navigationstatus",
+    name: "/navigation_status",
     messageType: "std_msgs/String",
   });
 

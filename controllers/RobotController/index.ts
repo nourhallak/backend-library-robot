@@ -3,6 +3,7 @@ import { status_1 } from "../../Database/Statuses";
 import { RosService } from "../../services/rosService";
 import { rosSubscribers } from "../../services/rosService/rosSubscribers";
 import { book, Books } from "../../Database/Books";
+import { RobotState } from "../../states/roboteState";
 
 /**
   @desc go home
@@ -89,6 +90,8 @@ export const getCurrentStatus = (req: Request, res: Response) => {
 */
 export const getBatteryPercentage = (req: Request, res: Response) => {
   try {
+    const robot = RobotState.getInstance();
+    res.json(robot.batteryPercentage);
     res.status(200);
   } catch (error) {
     console.log(error);

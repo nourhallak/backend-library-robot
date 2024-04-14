@@ -14,6 +14,9 @@ import {
   cancelScanRequest,
   returnBookStatus,
 } from "../controllers/BookController";
+import { RosService } from "../services/rosService";
+
+RosService.getInstance();
 
 //Search
 router.route("/search/:bookid").get(getBookInfo);

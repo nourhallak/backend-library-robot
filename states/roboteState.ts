@@ -10,7 +10,7 @@ export class RobotState {
   };
   public batteryPercentage = 100;
   public rackState: RackState = "Done";
-  public navigationState: NavigationState = "Reached";
+  public navigationState: NavigationState = "READY";
 
   /**
    * The Singleton's constructor should always be private to prevent direct

@@ -62,6 +62,16 @@ ros.on("close", function () {
 
 // Subscribing to a Topic
 // ----------------------
+
+// const batteryListener = new ROSLIB.Topic({
+//   ros: ros,
+//   name: "/battery_percentage",
+//   messageType: "std_msgs/Float32",
+// });
+
+// batteryListener.subscribe(function (message: any) {
+//   console.log(message.data);
+// });
 // var listener = new ROSLIB.Topic({
 //   ros: ros,
 //   name: "/odom",

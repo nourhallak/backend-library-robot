@@ -1,2 +1,2 @@
 export type RackState = "Done" | "Moving" | "Error";
-export type NavigationState = "Moving" | "Reached";
+export type NavigationState = "READY" | "MOVING" | "SUCCEEDED" | "ABORTED";
