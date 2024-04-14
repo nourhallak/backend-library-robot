@@ -71,8 +71,8 @@ export class RosService {
     return RosService.instance;
   }
 
-  // ->
-
+  // Publishers
+  //move to book publisher
   public moveRobot(robotPosition: RobotPosition) {
     var moveRobotTopic = new ROSLIB.Topic({
       ros: this.ros,
@@ -85,6 +85,7 @@ export class RosService {
     moveRobotTopic.publish(moveRobot);
   }
 
+  // move camera publisher
   public moveCamera(height: number) {
     var moveCameraTopic = new ROSLIB.Topic({
       ros: this.ros,
@@ -97,5 +98,19 @@ export class RosService {
     });
 
     moveCameraTopic.publish(cameraHeight);
+  }
+  // pause publisher
+  public pause(pause: string) {
+    var moveCameraTopic = new ROSLIB.Topic({
+      ros: this.ros,
+      name: "/pause",
+      messageType: "std_msgs/String",
+    });
+
+    var pauseStatus = new ROSLIB.Message({
+      data: pause,
+    });
+
+    moveCameraTopic.publish(pauseStatus);
   }
 }

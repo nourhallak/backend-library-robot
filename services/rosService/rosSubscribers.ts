@@ -1,11 +1,17 @@
 import ROSLIB from "roslib";
 import { RobotState } from "../../states/roboteState";
-import { OdomMessage } from "../../types/rosMessages";
+import {
+  batteryMessage,
+  NavigationStatusMessage,
+  OdomMessage,
+  PoseMessage,
+  RackMessage,
+} from "../../types/rosMessages";
 
 export const rosSubscribers = (ros: ROSLIB.Ros) => {
   const robotState = RobotState.getInstance();
 
-  // odom
+  // // odom
   // const odomListener = new ROSLIB.Topic({
   //   ros: ros,
   //   name: "/odom",
@@ -13,7 +19,7 @@ export const rosSubscribers = (ros: ROSLIB.Ros) => {
   // });
 
   // odomListener.subscribe(function (message: any) {
-  //   robotState.position = message.pose.pose.position;
+  //   robotState.position = (message as OdomMessage).pose.pose.position;
   // });
 
   // // pose
@@ -24,30 +30,52 @@ export const rosSubscribers = (ros: ROSLIB.Ros) => {
   // });
 
   // poseListener.subscribe(function (message: any) {
-  //   robotState.position = message;
+  //   robotState.position = (message as PoseMessage).position;
   // });
 
   // // twist
   // const twistListener = new ROSLIB.Topic({
   //   ros: ros,
-  //   name: "/pose",
-  //   messageType: "geometry_msgs/Pose",
+  //   name: "/twist",
+  //   messageType: "geometry_msgs/twist",
   // });
 
   // twistListener.subscribe(function (message: any) {
-  //   robotState.position = message;
+  //   // robotState.position  = (message as Twis;
   // });
 
   // battery percentage
   const batteryListener = new ROSLIB.Topic({
     ros: ros,
-    name: "/batterypercentage",
-    messageType: "nav_msgs/Odometry",
+    name: "/battery_percentage",
+    messageType: "std_msgs/Float32",
   });
 
   batteryListener.subscribe(function (message: any) {
-    robotState.position = message;
+    robotState.batteryPercentage = (message as batteryMessage).data;
   });
 
-  return [];
+  // rack status
+  const rackStatusListener = new ROSLIB.Topic({
+    ros: ros,
+    name: "/rackstatus",
+    messageType: "std_msgs/String",
+  });
+
+  rackStatusListener.subscribe(function (message: any) {
+    robotState.rackState = (message as RackMessage).data;
+  });
+
+  // navigation status
+  const navigationStatusListener = new ROSLIB.Topic({
+    ros: ros,
+    name: "/navigationstatus",
+    messageType: "std_msgs/String",
+  });
+
+  navigationStatusListener.subscribe(function (message: any) {
+    robotState.navigationState = (message as NavigationStatusMessage).data;
+  });
+
+  return [batteryListener, rackStatusListener, navigationStatusListener];
 };

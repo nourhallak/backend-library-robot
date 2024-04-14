@@ -1,3 +1,5 @@
+import { NavigationState, RackState } from "./enums";
+
 export type OdomMessage = {
   header: {
     seq: number;
@@ -15,87 +17,24 @@ export type OdomMessage = {
         w: number;
       };
     };
-    covariance: [
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number
-    ];
+    covariance: number[];
   };
   twist: {
     twist: {
       linear: { x: number; y: number; z: number };
       angular: { x: number; y: number; z: number };
     };
-    covariance: [
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number,
-      number
-    ];
+    covariance: number[];
   };
 };
+
+export type PoseMessage = {
+  position: { x: number; y: number; z: number };
+  orientation: { x: number; y: number; z: number; w: number };
+};
+
+export type RackMessage = { data: RackState };
+
+export type NavigationStatusMessage = { data: NavigationState };
+
+export type batteryMessage = { data: number };

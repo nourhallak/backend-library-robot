@@ -1,3 +1,4 @@
+import { NavigationState, RackState } from "../types/enums";
 import { RobotPosition } from "../types/robotPosition";
 
 export class RobotState {
@@ -7,6 +8,9 @@ export class RobotState {
     y: 0,
     z: 0,
   };
+  public batteryPercentage = 100;
+  public rackState: RackState = "Done";
+  public navigationState: NavigationState = "Reached";
 
   /**
    * The Singleton's constructor should always be private to prevent direct

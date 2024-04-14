@@ -1,5 +1,6 @@
 import ROSLIB from "roslib";
 import { rosIP, rosPort } from "./config";
+import { json } from "stream/consumers";
 
 var ros = new ROSLIB.Ros({
   url: `ws://${rosIP}:${rosPort}`,
