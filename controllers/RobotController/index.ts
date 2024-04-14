@@ -127,7 +127,8 @@ export const moveToBook = (req: Request, res: Response) => {
         book = element;
       }
     });
-
+    const robot = RosService.getInstance();
+    robot.moveRobot({ position: book.position, orientation: book.orientation });
     res.status(200);
   } catch (error) {
     console.log(error);
