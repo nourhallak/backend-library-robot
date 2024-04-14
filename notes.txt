@@ -1,15 +1,51 @@
-Sub:
+Sub: done
 /odom
 /battery
 /mechanism_state
 /navigation_state
 
-Pub:
+Pub: done
 /book_pose Geometry Message Pos 
   position {x,y,z}
   orientation {x,y,z,w} w must be 1
 
 /goal_distance i16
 
-Missing:
+Missing: done
 /cancel/pause
+
+
+
+Subscribers:
+  // // odom
+  // const odomListener = new ROSLIB.Topic({
+  //   ros: ros,
+  //   name: "/odom",
+  //   messageType: "nav_msgs/Odometry",
+  // });
+
+  // odomListener.subscribe(function (message: any) {
+  //   robotState.position = (message as OdomMessage).pose.pose.position;
+  // });
+
+  // // pose
+  // const poseListener = new ROSLIB.Topic({
+  //   ros: ros,
+  //   name: "/pose",
+  //   messageType: "geometry_msgs/Pose",
+  // });
+
+  // poseListener.subscribe(function (message: any) {
+  //   robotState.position = (message as PoseMessage).position;
+  // });
+
+  // // twist
+  // const twistListener = new ROSLIB.Topic({
+  //   ros: ros,
+  //   name: "/twist",
+  //   messageType: "geometry_msgs/twist",
+  // });
+
+  // twistListener.subscribe(function (message: any) {
+  //   // robotState.position  = (message as Twis;
+  // });
