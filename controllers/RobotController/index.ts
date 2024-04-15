@@ -58,13 +58,12 @@ export const goHome = (req: Request, res: Response) => {
  */
 export const movecamera = (req: Request, res: Response) => {
   try {
-    console.log("l");
-    const robot = RosService.getInstance();
-    robot.moveCamera(Number(req.body));
-    return res.status(200);
+    // const robot = RosService.getInstance();
+    // robot.moveCamera(Number(req.body.data));
+    return res.status(200).json({});
   } catch (error) {
     console.log(error);
-    return res.status(400);
+    return res.status(400).json({});
   }
 };
 

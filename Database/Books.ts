@@ -23,7 +23,7 @@ export const Books: book[] = [
     position: {
       x: 5.3,
       y: 3.2,
-      z: 2.2,
+      z: 22,
     },
     orientation: {
       x: 0,
