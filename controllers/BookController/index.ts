@@ -38,10 +38,10 @@ export const getBookInfo = (req: Request, res: Response) => {
       throw new Error("book not found");
     }
     res.json(Books[Books.indexOf(book)]);
-    res.status(200);
+    return res.status(200);
   } catch (error) {
     console.log(error);
-    res.status(400);
+    return res.status(400);
   }
 };
 

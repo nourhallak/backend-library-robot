@@ -52,18 +52,19 @@ export const goHome = (req: Request, res: Response) => {
 
 /**
  * @desc move camera
- * @route /screen/movecamera:distance
+ * @route /screen/movecamera
  * @method POST
  * @access public
  */
 export const movecamera = (req: Request, res: Response) => {
   try {
-    res.status(200);
+    console.log("l");
     const robot = RosService.getInstance();
-    robot.moveCamera(Number(req.params.distance));
+    robot.moveCamera(Number(req.body));
+    return res.status(200);
   } catch (error) {
     console.log(error);
-    res.status(400);
+    return res.status(400);
   }
 };
 
