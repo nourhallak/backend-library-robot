@@ -38,3 +38,11 @@ export type RackMessage = { data: RackState };
 export type NavigationStatusMessage = { data: NavigationState };
 
 export type BatteryMessage = { data: number };
+
+export interface RobotCurrentStatusMessage {
+  navigationState: NavigationState;
+  rackState: RackState;
+  batteryPercentage: BatteryMessage;
+  // currentX: number;
+  // currentY: number;
+}

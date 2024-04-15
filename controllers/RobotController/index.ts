@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { status_1 } from "../../Database/Statuses";
+// import { status_1 } from "../../Database/Statuses";
 import { RosService } from "../../services/rosService";
 import { rosSubscribers } from "../../services/rosService/rosSubscribers";
 import { book, Books } from "../../Database/Books";
@@ -75,7 +75,8 @@ export const pause = (req: Request, res: Response) => {
 */
 export const getCurrentStatus = (req: Request, res: Response) => {
   try {
-    res.status(200).json(status_1);
+    const robot = RobotState.getInstance();
+    res.status(200).json(robot.robotCurrentStatus);
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -91,7 +92,7 @@ export const getCurrentStatus = (req: Request, res: Response) => {
 export const getBatteryPercentage = (req: Request, res: Response) => {
   try {
     const robot = RobotState.getInstance();
-    res.json(robot.batteryPercentage);
+    res.json((robot.batteryPercentage.data * 100) / 42);
     res.status(200);
   } catch (error) {
     console.log(error);
