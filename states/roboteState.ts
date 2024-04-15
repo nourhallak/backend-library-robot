@@ -1,9 +1,6 @@
 import { NavigationState, RackState } from "../types/enums";
 import { RobotPosition } from "../types/robotPosition";
-import {
-  BatteryMessage,
-  RobotCurrentStatusMessage,
-} from "../types/rosMessages";
+import { BatteryMessage } from "../types/rosMessages";
 
 export class RobotState {
   private static instance: RobotState;
@@ -18,17 +15,9 @@ export class RobotState {
     z: 0,
     w: 1,
   };
-  public batteryPercentage: BatteryMessage = { data: 100 };
+  public batteryPercentage: BatteryMessage = { data: 42 };
   public rackState: RackState = "HOME";
   public navigationState: NavigationState = "READY";
-
-  public robotCurrentStatus: RobotCurrentStatusMessage = {
-    navigationState: this.navigationState,
-    rackState: this.rackState,
-    batteryPercentage: this.batteryPercentage,
-    // currentX: number;
-    // currentY: number;
-  };
 
   /**
    * The Singleton's constructor should always be private to prevent direct

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-// import { status_1 } from "../../Database/Statuses";
 import { RosService } from "../../services/rosService";
 import { rosSubscribers } from "../../services/rosService/rosSubscribers";
 import { book, Books } from "../../Database/Books";
 import { RobotState } from "../../states/roboteState";
+import { robotCurrentStatus } from "../../types/currentStatus";
 
 /**
   @desc go home
@@ -51,6 +51,23 @@ export const goHome = (req: Request, res: Response) => {
 // };
 
 /**
+ * @desc move camera
+ * @route /screen/movecamera:distance
+ * @method POST
+ * @access public
+ */
+export const movecamera = (req: Request, res: Response) => {
+  try {
+    res.status(200);
+    const robot = RosService.getInstance();
+    robot.moveCamera(Number(req.params.distance));
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  }
+};
+
+/**
  * @desc pause
  * @route /screen/pause
  * @method POST
@@ -75,8 +92,7 @@ export const pause = (req: Request, res: Response) => {
 */
 export const getCurrentStatus = (req: Request, res: Response) => {
   try {
-    const robot = RobotState.getInstance();
-    res.status(200).json(robot.robotCurrentStatus);
+    // res.status(200).json(robotCurrentStatus);
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -92,7 +108,7 @@ export const getCurrentStatus = (req: Request, res: Response) => {
 export const getBatteryPercentage = (req: Request, res: Response) => {
   try {
     const robot = RobotState.getInstance();
-    res.json((robot.batteryPercentage.data * 100) / 42);
+    res.json(robot.batteryPercentage.data);
     res.status(200);
   } catch (error) {
     console.log(error);
@@ -133,9 +149,9 @@ export const moveToBook = (req: Request, res: Response) => {
     });
     const robot = RosService.getInstance();
     robot.moveRobot({ position: book.position, orientation: book.orientation });
-    res.status(200);
+    return res.status(200).json({});
   } catch (error) {
     console.log(error);
-    res.status(400);
+    return res.status(400).json({});
   }
 };
