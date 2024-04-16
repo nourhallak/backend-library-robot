@@ -66,6 +66,22 @@ export const movecamera = (req: Request, res: Response) => {
     return res.status(400).json({});
   }
 };
+/**
+ * @desc laser control
+ * @route /screen/laser
+ * @method POST
+ * @access public
+ */
+export const laser = (req: Request, res: Response) => {
+  try {
+    const robot = RosService.getInstance();
+    robot.laser(true);
+    return res.status(200).json({});
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({});
+  }
+};
 
 /**
  * @desc pause
@@ -75,12 +91,12 @@ export const movecamera = (req: Request, res: Response) => {
  */
 export const pause = (req: Request, res: Response) => {
   try {
-    res.status(200);
     const robot = RosService.getInstance();
     robot.pause(true);
+    return res.status(200);
   } catch (error) {
     console.log(error);
-    res.status(400);
+    return res.status(400);
   }
 };
 

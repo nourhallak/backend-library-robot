@@ -7,6 +7,7 @@ import {
   getBatteryPercentage,
   moveToBook,
   movecamera,
+  laser,
 } from "../controllers/RobotController";
 import {
   getBookInfo,
@@ -36,5 +37,6 @@ router.route("/currentstatus").get(getCurrentStatus);
 router.route("/batterypercentage").get(getBatteryPercentage);
 router.route("/movetobook").post(moveToBook);
 router.route("/movecamera").post(movecamera);
+router.route("/laser").post(laser);
 
 module.exports = router;

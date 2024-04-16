@@ -100,6 +100,21 @@ export class RosService {
     moveCameraTopic.publish(cameraHeight);
   }
 
+  // laser publisher
+  public laser(laser: boolean) {
+    var laserTopic = new ROSLIB.Topic({
+      ros: this.ros,
+      name: "/laser_pointer",
+      messageType: "std_msgs/Bool",
+    });
+
+    var laserStatus = new ROSLIB.Message({
+      data: laser,
+    });
+
+    laserTopic.publish(laserStatus);
+  }
+
   // pause publisher
   public pause(pause: boolean) {
     var pauseTopic = new ROSLIB.Topic({
