@@ -1,10 +1,7 @@
-import {
-  NavigationStatusMessage,
-  RackMessage,
-  BatteryMessage,
-} from "./rosMessages";
+import { NavigationState, RackState } from "./enums";
+
 export interface robotCurrentStatus {
-  navigationState: NavigationStatusMessage;
-  rackState: RackMessage;
-  batteryPercentage: BatteryMessage;
+  navigationState: NavigationState;
+  rackState: RackState;
+  batteryPercentage: number;
 }

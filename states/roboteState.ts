@@ -15,7 +15,7 @@ export class RobotState {
     z: 0,
     w: 1,
   };
-  public batteryPercentage: BatteryMessage = { data: 42 };
+  public batteryPercentage = 100;
   public rackState: RackState = "HOME";
   public navigationState: NavigationState = "READY";
 

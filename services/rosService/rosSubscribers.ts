@@ -17,7 +17,7 @@ export const rosSubscribers = (ros: ROSLIB.Ros) => {
   });
 
   batteryListener.subscribe(function (message: any) {
-    robotState.batteryPercentage.data =
+    robotState.batteryPercentage =
       ((message as BatteryMessage).data * 100) / 42;
   });
 

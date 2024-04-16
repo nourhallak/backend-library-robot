@@ -13,7 +13,7 @@ import { robotCurrentStatus } from "../../types/currentStatus";
 */
 export const goHome = (req: Request, res: Response) => {
   try {
-    res.status(200);
+    res.status(200).json({});
     const robot = RosService.getInstance();
     robot.moveRobot({
       position: {
@@ -30,7 +30,7 @@ export const goHome = (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
 
@@ -42,11 +42,11 @@ export const goHome = (req: Request, res: Response) => {
 // */
 // export const cancel = (req: Request, res: Response) => {
 //   try {
-//     res.status(200);
+//     res.status(200).json({});
 
 //   } catch (error) {
 //     console.log(error);
-//     res.status(400);
+//     res.status(400).json({});
 //   }
 // };
 
@@ -93,10 +93,10 @@ export const pause = (req: Request, res: Response) => {
   try {
     const robot = RosService.getInstance();
     robot.pause(true);
-    return res.status(200);
+    return res.status(200).json({});
   } catch (error) {
     console.log(error);
-    return res.status(400);
+    return res.status(400).json({});
   }
 };
 
@@ -108,10 +108,15 @@ export const pause = (req: Request, res: Response) => {
 */
 export const getCurrentStatus = (req: Request, res: Response) => {
   try {
-    // res.status(200).json(robotCurrentStatus);
+    let robotState = RobotState.getInstance();
+    res.status(200).json({
+      batteryPercentage: robotState.batteryPercentage,
+      navigationState: robotState.navigationState,
+      rackState: robotState.rackState,
+    } satisfies robotCurrentStatus);
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
 
@@ -124,11 +129,10 @@ export const getCurrentStatus = (req: Request, res: Response) => {
 export const getBatteryPercentage = (req: Request, res: Response) => {
   try {
     const robot = RobotState.getInstance();
-    res.json(robot.batteryPercentage.data);
-    res.status(200);
+    return res.status(200).json(robot.batteryPercentage);
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
 

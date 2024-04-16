@@ -34,14 +34,13 @@ export const getBookInfo = (req: Request, res: Response) => {
       }
     });
     if (book == emptybook) {
-      res.status(404);
+      return res.status(404).json({});
       throw new Error("book not found");
     }
-    res.json(Books[Books.indexOf(book)]);
-    return res.status(200);
+    return res.status(200).json(Books[Books.indexOf(book)]);
   } catch (error) {
     console.log(error);
-    return res.status(400);
+    return res.status(400).json({});
   }
 };
 
@@ -56,7 +55,7 @@ export const getAllBooks = (req: Request, res: Response) => {
     res.status(200).json(Books);
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
 
@@ -71,7 +70,7 @@ export const scanBookRequest = (req: Request, res: Response) => {
     res.status(200).json({ message: "Post scan book." });
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
 
@@ -86,7 +85,7 @@ export const cancelScanRequest = (req: Request, res: Response) => {
     res.status(200).json({ message: "Post cancel scan book." });
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
 
@@ -101,6 +100,6 @@ export const returnBookStatus = (req: Request, res: Response) => {
     res.status(200).json({ message: "Post status of returned book." });
   } catch (error) {
     console.log(error);
-    res.status(400);
+    res.status(400).json({});
   }
 };
