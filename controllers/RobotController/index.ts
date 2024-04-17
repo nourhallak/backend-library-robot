@@ -58,8 +58,26 @@ export const goHome = (req: Request, res: Response) => {
  */
 export const movecamera = (req: Request, res: Response) => {
   try {
-    // const robot = RosService.getInstance();
+    const robot = RosService.getInstance();
     // robot.moveCamera(Number(req.body.data));
+    robot.moveCamera(120);
+    return res.status(200).json({});
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({});
+  }
+};
+
+/**
+ * @desc move camera
+ * @route /screen/lowercamera
+ * @method POST
+ * @access public
+ */
+export const lowercamera = (req: Request, res: Response) => {
+  try {
+    const robot = RosService.getInstance();
+    robot.moveCamera(0);
     return res.status(200).json({});
   } catch (error) {
     console.log(error);

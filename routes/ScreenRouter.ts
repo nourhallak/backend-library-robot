@@ -10,6 +10,7 @@ import {
   laser,
   navigateToBooks,
   userConfirm,
+  lowercamera,
 } from "../controllers/RobotController";
 import {
   getBookInfo,
@@ -41,6 +42,7 @@ router.route("/movetobook").post(moveToBook);
 router.route("/navigatetobooks").post(navigateToBooks);
 router.route("/userconfirm").post(userConfirm);
 router.route("/movecamera").post(movecamera);
+router.route("/lowercamera").post(lowercamera);
 router.route("/laser").post(laser);
 
 module.exports = router;
