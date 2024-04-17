@@ -24,7 +24,7 @@ export const rosSubscribers = (ros: ROSLIB.Ros) => {
   // rack status
   const rackStatusListener = new ROSLIB.Topic({
     ros: ros,
-    name: "/rackstatus",
+    name: "/mechanism_state",
     messageType: "std_msgs/String",
   });
 

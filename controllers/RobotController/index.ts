@@ -113,6 +113,10 @@ export const getCurrentStatus = (req: Request, res: Response) => {
       batteryPercentage: robotState.batteryPercentage,
       navigationState: robotState.navigationState,
       rackState: robotState.rackState,
+      booksToDeliver: robotState.booksToDeliver,
+      currentBook: robotState.currentBook,
+      stateText: robotState.stateText,
+      waitingForUserToConfirm: robotState.waitingForUserToConfirm,
     } satisfies robotCurrentStatus);
   } catch (error) {
     console.log(error);
@@ -169,6 +173,31 @@ export const moveToBook = (req: Request, res: Response) => {
     });
     const robot = RosService.getInstance();
     robot.moveRobot({ position: book.position, orientation: book.orientation });
+    return res.status(200).json({});
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({});
+  }
+};
+
+export const userConfirm = (req: Request, res: Response) => {
+  try {
+    const robot = RobotState.getInstance();
+    robot.userConfirmed = true;
+    return res.status(200).json({});
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({});
+  }
+};
+
+export const navigateToBooks = (req: Request, res: Response) => {
+  try {
+    const bookIds = req.body.books;
+    const robot = RobotState.getInstance();
+    robot.navigateToBooks(bookIds);
+    console.log("Navigating to books");
+    console.log(bookIds);
     return res.status(200).json({});
   } catch (error) {
     console.log(error);

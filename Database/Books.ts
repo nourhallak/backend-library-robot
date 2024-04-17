@@ -19,17 +19,17 @@ export const Books: book[] = [
   {
     name: "The best book in the world",
     auther: "Best Author",
-    decoded_string: "123abc",
+    decoded_string: "5626AN5772014CO",
     position: {
-      x: 5.3,
-      y: 3.2,
-      z: 22,
+      x: 3.7,
+      y: 1.9,
+      z: 90,
     },
     orientation: {
       x: 0,
       y: 0,
-      z: 0,
-      w: 1,
+      z: 0.99,
+      w: 0.04,
     },
   },
   {
